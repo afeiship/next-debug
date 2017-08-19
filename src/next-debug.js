@@ -2,10 +2,6 @@
 
   var global = global || this || self || window;
   var nx = global.nx || require('next-js-core2');
-  var EMPTY_ARR = [];
-  var ALERT_START = '=== ALERT START === \n';
-  var ALERT_END = '=== ALERT  END === \n';
-  var ENTER = '\n';
 
   //import library:
   nx.is = nx.is || require('next-is');
@@ -57,13 +53,12 @@
        */
       alert: function(){
         if( typeof alert !== 'undefined' ){
-            var argsArray = EMPTY_ARR.slice.call(arguments);
-            var result = "";
-            for (var i = 0; i < argsArray.length; i++) {
-              var msg = argsArray[i];
-              if (typeof (msg) == 'object') msg = this.stringify(msg);
-              result += msg;
-              if (i < (argsArray.length - 1)) result += ',  ';
+            var argsArray = Array.prototype.slice.call(arguments);
+            var i, result = "";
+            var length = argsArray.length;
+            for (i = 0; i < length; i++) {
+              result += this.stringify( argsArray[i] );
+              if (i < (length - 1)) result += ',  ';
             }
             alert(result);
         }
