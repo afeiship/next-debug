@@ -24,7 +24,9 @@
     "yargs": "^4.7.1"
   },
   "dependencies": {
+    "next-escape": "github:afeiship/next-escape",
     "next-is": "github:afeiship/next-is",
-    "next-js-core2": "github:afeiship/next-js-core2"
+    "next-js-core2": "github:afeiship/next-js-core2",
+    "next-type": "github:afeiship/next-type"
   }
 }
