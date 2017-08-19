@@ -51,10 +51,21 @@
         }
         return 'null'; //无法序列化的，返回null;
       },
+      /**
+       * @thanks to:
+       * https://stackoverflow.com/questions/18093782/javascript-or-jquery-show-multiple-variables-in-one-alert
+       */
       alert: function(){
         if( typeof alert !== 'undefined' ){
-          var args = EMPTY_ARR.slice(arguments);
-          alert(ALERT_START + args.join(ENTER) + ALERT_END);
+            var argsArray = EMPTY_ARR.slice.call(arguments);
+            var result = "";
+            for (var i = 0; i < argsArray.length; i++) {
+              var msg = argsArray[i];
+              if (typeof (msg) == 'object') msg = this.stringify(msg);
+              result += msg;
+              if (i < (argsArray.length - 1)) result += ',  ';
+            }
+            alert(result);
         }
       }
     }
